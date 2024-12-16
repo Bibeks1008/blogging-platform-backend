@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  dev-db:
+    image: postgres:17.2 # Use PostgreSQL 17.2 as per your requirements
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - blog-network
+    restart: always
+
+  test-db:
+    image: postgres:17.2 
+    ports:
+      - '5435:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - blog-network
+    restart: always
+
+networks:
+  blog-network:
