@@ -7,9 +7,10 @@ export class PostimageService {
 
   async uploadPostImage(postId: number, file: Express.Multer.File) {
     const fileType = file.mimetype.split('/')[1];
+    console.log(file.filename);
     const imageDetail = await this.prisma.postImage.create({
       data: {
-        imageUrl: file.path,
+        imageUrl: file.filename,
         fileType: fileType,
         postId: postId,
       },
